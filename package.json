@@ -26,9 +26,12 @@
     "scripts": {
         "test": "grunt test"
     },
-    "devDependencies": {
+    "dependencies": {
         "grunt": "~0.3.11",
         "js-beautify": "0.2.3"
     },
-    "keywords": ["gruntplugin"]
+    "devDependencies": {
+        "grunt": "~0.3.11"
+    },
+    "keywords": ["gruntplugin", "beautify", "beautifier", "jsbeautifier", "code-quality"]
 }

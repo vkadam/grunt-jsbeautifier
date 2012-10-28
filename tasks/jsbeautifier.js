@@ -30,7 +30,8 @@ module.exports = function(grunt) {
             grunt.file.write(filepath, result);
             fileCount++;
         });
-        grunt.log.writeln(["Completed total", fileCount, "files."].join(" "));
+        grunt.log.write(["Beautified", fileCount, "files... "].join(" "));
+        grunt.log.ok();
     });
 
     // ==========================================================================
