@@ -1,6 +1,6 @@
 # grunt-jsbeautifier
 
-jsbeautifier.org for grunt
+[jsbeautifier.org](http://jsbeautifier.org/) for grunt
 
 ## Getting Started
 Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-jsbeautifier`
@@ -19,6 +19,16 @@ grunt.loadNpmTasks('grunt-jsbeautifier');
   - files (required): Your source files to beautify
   - options (optional): Overwrite default jsbeautifier options
 
+### - Minimum config
+```javascript
+"jsbeautifier" : {
+  files : ["src/**/*.js"]
+}
+```
+
+Default options from jsbeautifier.org will be used
+
+### - Complete config
 ```javascript
 "jsbeautifier" : {
   files : ["src/**/*.js"],
@@ -40,8 +50,7 @@ grunt.loadNpmTasks('grunt-jsbeautifier');
   }
 }
 ```
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
+Only specifiy options to overwrite
 
 ## Release History
 * 0.1.0: Initial version.
