@@ -54,7 +54,8 @@ Only specifiy options to overwrite
 
 ## Release History
 * 0.1.0: Initial version.
-* 0.1.1: Supported grunt 0.4~ compatible.
+* 0.1.1: Readme file changes
+* 0.1.2: Supported grunt 0.4~ compatible.
 
 ## License
 Copyright (c) 2012 Vishal Kadam  
