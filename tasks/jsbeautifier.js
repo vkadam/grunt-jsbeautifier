@@ -33,11 +33,4 @@ module.exports = function(grunt) {
         grunt.log.write(["Beautified", fileCount, "files... "].join(" "));
         grunt.log.ok();
     });
-
-    // ==========================================================================
-    // HELPERS
-    // ==========================================================================
-    grunt.registerHelper('jsbeautifier', function() {
-        return 'jsbeautifier!!!';
-    });
 };
