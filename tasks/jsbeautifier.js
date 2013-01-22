@@ -27,6 +27,8 @@ module.exports = function(grunt) {
 
         grunt.file.expandFiles(files).forEach(function(filepath) {
             var result = beautify(grunt.file.read(filepath), tmp_opts);
+            // Had to re-beautify for weired issue of block comment.
+            result = beautify(result, tmp_opts);
             grunt.file.write(filepath, result);
             fileCount++;
         });
