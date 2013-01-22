@@ -28,7 +28,7 @@
     },
     "dependencies": {
         "grunt": "~0.3.11",
-        "js-beautify": ">=0.2.3"
+        "js-beautify": "0.2.3"
     },
     "devDependencies": {
         "grunt": "~0.3.11"
