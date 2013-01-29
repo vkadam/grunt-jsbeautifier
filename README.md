@@ -57,6 +57,7 @@ Only specifiy options to overwrite
 * 0.1.1: Readme file changes
 * 0.1.2: Supported grunt 0.4~.
 * 0.1.3: Added fix for block comment formatting.
+* 0.1.4: Upgraded [js-beautify](https://npmjs.org/package/js-beautify) to latest version (0.3.2)
 
 ## License
 Copyright (c) 2012 Vishal Kadam  
