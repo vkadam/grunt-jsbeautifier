@@ -3,19 +3,13 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         jsbeautifier: {
-            files: ['package.json', '<config:lint.files>']
+            files: ['package.json', '<%= jshint.files %>']
         },
-        test: {
-            files: ['test/**/*.js']
-        },
-        lint: {
-            files: ['grunt.js', 'tasks/**/*.js', 'test/**/*.js']
-        },
-        watch: {
-            files: '<config:lint.files>',
-            tasks: 'default'
+        nodeunit: {
+            all: ['test/**/*.js']
         },
         jshint: {
+            files: ['package.json', 'Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js'],
             options: {
                 curly: true,
                 eqeqeq: true,
@@ -29,15 +23,18 @@ module.exports = function(grunt) {
                 eqnull: true,
                 node: true,
                 es5: true
-            },
-            globals: {}
+            }
         }
     });
 
-    // Load local tasks.
+    // Actually load this plugin's task(s).
     grunt.loadTasks('tasks');
 
-    // Default task.
-    grunt.registerTask('default', 'jsbeautifier lint test');
+    // These plugins provide necessary tasks.
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-nodeunit');
+
+    // By default, beautifiy, lint and run all tests.
+    grunt.registerTask('default', ['jsbeautifier', 'jshint', 'nodeunit']);
 
 };

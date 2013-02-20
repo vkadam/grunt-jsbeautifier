@@ -3,11 +3,31 @@
 [jsbeautifier.org](http://jsbeautifier.org/) for grunt
 
 ## Getting Started
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-jsbeautifier`
+This plugin recommends using Grunt `~0.4.0`. Grunt `~0.3.0` is only suported till version 0.1.4
+
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+
+### Grunt `~0.4.0`
+```
+npm install grunt-jsbeautifier --save-dev
+```
+
+One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```
+grunt.loadNpmTasks('grunt-jsbeautifier');
+```
+
+### Grunt `~0.3.0`
+Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: 
+
+```
+npm install grunt-jsbeautifier@0.1.4
+```
 
 Then add this line to your project's `grunt.js` gruntfile:
 
-```javascript
+```
 grunt.loadNpmTasks('grunt-jsbeautifier');
 ```
 
@@ -20,7 +40,7 @@ grunt.loadNpmTasks('grunt-jsbeautifier');
   - options (optional): Overwrite default jsbeautifier options
 
 ### - Minimum config
-```javascript
+```
 "jsbeautifier" : {
   files : ["src/**/*.js"]
 }
@@ -29,7 +49,7 @@ grunt.loadNpmTasks('grunt-jsbeautifier');
 Default options from jsbeautifier.org will be used
 
 ### - Complete config
-```javascript
+```
 "jsbeautifier" : {
   files : ["src/**/*.js"],
   options : {
@@ -58,6 +78,7 @@ Only specifiy options to overwrite
 * 0.1.2: Supported grunt 0.4~.
 * 0.1.3: Added fix for block comment formatting.
 * 0.1.4: Upgraded [js-beautify](https://npmjs.org/package/js-beautify) to latest version (0.3.2)
+* 0.1.5: Upgraded to grunt ~0.4.0. Fixed issues [2](https://github.com/vkadam/grunt-jsbeautifier/issues/2), [3](https://github.com/vkadam/grunt-jsbeautifier/issues/3), [4](https://github.com/vkadam/grunt-jsbeautifier/issues/4)
 
 ## License
 Copyright (c) 2012 Vishal Kadam  

@@ -1,11 +1,3 @@
-/*
- * grunt-jsbeautifier
- * https://github.com/vkadam/grunt-jsbeautifier
- *
- * Copyright (c) 2012 Vishal Kadam
- * Licensed under the MIT license.
- */
-
 module.exports = function(grunt) {
     "use strict";
     // Please see the grunt documentation for more information regarding task and
@@ -25,7 +17,7 @@ module.exports = function(grunt) {
         }
         var fileCount = 0;
 
-        grunt.file.expandFiles(files).forEach(function(filepath) {
+        grunt.file.expand(files).forEach(function(filepath) {
             var result = beautify(grunt.file.read(filepath), tmp_opts);
             // Had to re-beautify for weired issue of block comment.
             result = beautify(result, tmp_opts);
