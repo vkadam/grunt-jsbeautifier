@@ -79,6 +79,7 @@ Only specifiy options to overwrite
 * 0.1.3: Added fix for block comment formatting.
 * 0.1.4: Upgraded [js-beautify](https://npmjs.org/package/js-beautify) to latest version (0.3.2)
 * 0.1.5: Upgraded to grunt ~0.4.0. Fixed issues [2](https://github.com/vkadam/grunt-jsbeautifier/issues/2), [3](https://github.com/vkadam/grunt-jsbeautifier/issues/3), [4](https://github.com/vkadam/grunt-jsbeautifier/issues/4)
+* 0.1.6: Make sure new line at the end of file. Fixed issue [5](https://github.com/vkadam/grunt-jsbeautifier/issues/5)
 
 ## License
 Copyright (c) 2012 Vishal Kadam  
