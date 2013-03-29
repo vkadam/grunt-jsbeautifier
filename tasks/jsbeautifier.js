@@ -5,30 +5,29 @@ module.exports = function(grunt) {
     // ==========================================================================
     // TASKS
     // ==========================================================================
-    grunt.registerTask('jsbeautifier', 'jsbeautifier.org for grunt', function() {
-        // Beautify specified files.
-        var jsBeautifierOrg = require('js-beautify'),
-            beautify = jsBeautifierOrg.js_beautify,
-            files = grunt.config(['jsbeautifier', 'files']),
-            tmp_opts = grunt.config(['jsbeautifier', 'options']);
+    grunt.task.registerMultiTask('jsbeautifier', 'jsbeautifier.org for grunt', function() {
 
-        if (tmp_opts) {
-            grunt.verbose.writeln(["Using options", JSON.stringify(tmp_opts)].join(" "));
-        }
+        var beautify = require('js-beautify').js_beautify;
+        var params = this.options();
         var fileCount = 0;
 
-        grunt.file.expand(files).forEach(function(filepath) {
-            var result = beautify(grunt.file.read(filepath), tmp_opts);
-            // Had to re-beautify for weired issue of block comment.
-            result = beautify(result, tmp_opts);
+        if (this.filesSrc) {
+            grunt.verbose.writeln('Beautifing using filesSrc with ' + this.filesSrc.length.toString().cyan + ' files...');
+            this.filesSrc.forEach(function(src) {
+                if (grunt.file.isDir(src)) {
+                    return;
+                }
 
-            // ensure newline at end of beautified output
-            result += '\n';
-
-            grunt.file.write(filepath, result);
-            fileCount++;
-        });
-        grunt.log.write(["Beautified", fileCount, "files... "].join(" "));
+                var result = grunt.file.read(src);
+                grunt.verbose.write('Beautifing ' + src.cyan + '...');
+                result = beautify(result, params);
+                result += '\n';
+                grunt.verbose.ok();
+                grunt.file.write(src, result);
+                fileCount++;
+            });
+        }
+        grunt.log.write('Beautified ' + fileCount.toString().cyan + ' files...');
         grunt.log.ok();
     });
 };
