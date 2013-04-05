@@ -3,11 +3,11 @@
 [jsbeautifier.org](http://jsbeautifier.org/) for grunt
 
 ## Getting Started
-This plugin recommends using Grunt `~0.4.0`. Grunt `~0.3.0` is only suported till version 0.1.4
+This plugin recommends using Grunt `~0.4.1`. Grunt `~0.3.0` is only suported till version 0.1.4
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
-### Grunt `~0.4.0`
+### Grunt `~0.4.1`
 ```
 npm install grunt-jsbeautifier --save-dev
 ```
@@ -81,6 +81,7 @@ Only specifiy options to overwrite
 * 0.1.4: Upgraded [js-beautify](https://npmjs.org/package/js-beautify) to latest version (0.3.2)
 * 0.1.5: Upgraded to grunt ~0.4.0. Fixed issues [2](https://github.com/vkadam/grunt-jsbeautifier/issues/2), [3](https://github.com/vkadam/grunt-jsbeautifier/issues/3), [4](https://github.com/vkadam/grunt-jsbeautifier/issues/4)
 * 0.1.6: Make sure new line at the end of file. Fixed issue [5](https://github.com/vkadam/grunt-jsbeautifier/issues/5)
+* 0.1.7: Upgraded grunt to ~0.4.1, [js-beautify](https://npmjs.org/package/js-beautify) to ~1.2.0. Fixed issues [6](https://github.com/vkadam/grunt-jsbeautifier/issues/6), [7](https://github.com/vkadam/grunt-jsbeautifier/issues/7), [8](https://github.com/vkadam/grunt-jsbeautifier/issues/8), [9](https://github.com/vkadam/grunt-jsbeautifier/issues/9)
 
 ## License
 Copyright (c) 2012 Vishal Kadam  
