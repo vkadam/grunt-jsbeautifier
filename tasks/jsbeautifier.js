@@ -10,6 +10,7 @@ module.exports = function(grunt) {
         var beautify = require('js-beautify').js_beautify;
         var params = this.options();
         var fileCount = 0;
+        var changedFileCount = 0;
 
         if (this.filesSrc) {
             grunt.verbose.writeln('Beautifing using filesSrc with ' + this.filesSrc.length.toString().cyan + ' files...');
@@ -18,16 +19,19 @@ module.exports = function(grunt) {
                     return;
                 }
 
-                var result = grunt.file.read(src);
+                var original = grunt.file.read(src);
                 grunt.verbose.write('Beautifing ' + src.cyan + '...');
-                result = beautify(result, params);
+                var result = beautify(original, params);
                 result += '\n';
                 grunt.verbose.ok();
-                grunt.file.write(src, result);
+                if (original !== result) {
+                    grunt.file.write(src, result);
+                    changedFileCount++;
+                }
                 fileCount++;
             });
         }
-        grunt.log.write('Beautified ' + fileCount.toString().cyan + ' files...');
+        grunt.log.write('Beautified ' + fileCount.toString().cyan + ' files, changed ' + changedFileCount.toString().cyan + ' files...');
         grunt.log.ok();
     });
 };
