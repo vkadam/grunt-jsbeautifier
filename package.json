@@ -1,7 +1,7 @@
 {
     "name": "grunt-jsbeautifier",
     "description": "jsbeautifier.org for grunt",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "homepage": "https://github.com/vkadam/grunt-jsbeautifier",
     "author": {
         "name": "Vishal Kadam",
@@ -15,26 +15,25 @@
         "url": "https://github.com/vkadam/grunt-jsbeautifier/issues"
     },
     "licenses": [{
-            "type": "MIT",
-            "url": "https://github.com/vkadam/grunt-jsbeautifier/blob/master/LICENSE-MIT"
-        }
-    ],
+        "type": "MIT",
+        "url": "https://github.com/vkadam/grunt-jsbeautifier/blob/master/LICENSE-MIT"
+    }],
     "engines": {
         "node": ">=0.8"
     },
     "dependencies": {
         "grunt": "~0.4.1",
-        "js-beautify": "~1.4.0"
+        "js-beautify": "1.4.0"
     },
     "devDependencies": {
         "grunt-contrib-jshint": "~0.1.1",
         "grunt-contrib-nodeunit": "~0.1.2"
     },
     "keywords": [
-            "gruntplugin",
-            "beautify",
-            "beautifier",
-            "jsbeautifier",
-            "code-quality"
+        "gruntplugin",
+        "beautify",
+        "beautifier",
+        "jsbeautifier",
+        "code-quality"
     ]
 }

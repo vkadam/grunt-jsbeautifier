@@ -64,9 +64,9 @@ Default options from jsbeautifier.org will be used
     keep_array_indentation: false,
     keep_function_indentation: false,
     space_before_conditional: true,
+    break_chained_methods: false,
     eval_code: false,
-    indent_case: false,
-    wrap_line_length: 80,
+    wrap_line_length: 0,
     unescape_strings: false
   }
 }
@@ -83,6 +83,7 @@ Only specifiy options to overwrite
 * 0.1.6: Make sure new line at the end of file. Fixed issue [5](https://github.com/vkadam/grunt-jsbeautifier/issues/5)
 * 0.1.7: Upgraded grunt to ~0.4.1, [js-beautify](https://npmjs.org/package/js-beautify) to ~1.2.0. Fixed issues [6](https://github.com/vkadam/grunt-jsbeautifier/issues/6), [7](https://github.com/vkadam/grunt-jsbeautifier/issues/7), [8](https://github.com/vkadam/grunt-jsbeautifier/issues/8), [9](https://github.com/vkadam/grunt-jsbeautifier/issues/9)
 * 0.1.8: Upgraded [js-beautify](https://npmjs.org/package/js-beautify) to ~1.3.1. Fixed issues [10](https://github.com/vkadam/grunt-jsbeautifier/issues/10), [12](https://github.com/vkadam/grunt-jsbeautifier/issues/12)
+* 0.1.9: Upgraded [js-beautify](https://npmjs.org/package/js-beautify) to 1.4.0. Fixed issues [13](https://github.com/vkadam/grunt-jsbeautifier/issues/13)
 
 ## License
 Copyright (c) 2012 Vishal Kadam  
