@@ -34,22 +34,61 @@ grunt.loadNpmTasks('grunt-jsbeautifier');
 [grunt]: http://gruntjs.com/
 [getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
 
-## Config
-- jsbeautifier
+## Examples
+
+### Single Task
   - files (required): Your source files to beautify
   - options (optional): Overwrite default jsbeautifier options
 
-### - Minimum config
-```
+```javascript
 "jsbeautifier" : {
-  files : ["src/**/*.js"]
+    files : ["src/**/*.js"],
+    options : {
+    }
 }
 ```
 
-Default options from jsbeautifier.org will be used
+### Multi Task
+  - src (required): Your source files to beautify
+  - options (optional): Overwrite default jsbeautifier options
 
-### - Complete config
+```javascript
+"jsbeautifier" : {
+    "default": {
+        src : ["src/**/*.js"]
+    },
+    "git-pre-commit": {
+        src : ["src/**/*.js"],
+        options : {
+            mode:"VERIFY_ONLY"
+        }
+    }
+}
 ```
+
+## Config
+
+#### files
+Type: `Files`
+Default value: `[]`
+
+List of files to be beautified. This option is applicable only for **Single Task**
+
+#### src
+Type: `Files`
+Default value: `[]`
+
+List of files to be beautified. This option is applicable only for **Multi Task**
+
+#### mode
+Type: `String`
+Default value: `VERIFY_AND_WRITE`
+
+If mode is "VERIFY_ONLY", then task will fail if at least one file can be beautified. This is useful for pre-commit check.
+
+### Default options from jsbeautifier.org can be used
+
+```javascript
 "jsbeautifier" : {
   files : ["src/**/*.js"],
   options : {
@@ -73,6 +112,15 @@ Default options from jsbeautifier.org will be used
 ```
 Only specifiy options to overwrite
 
+### Tips
+#### 1. Exclude files
+All files from foo folder except bar.js
+```javascript
+    jsbeautifier: {
+        files: ['foo/*.js', '!foo/bar.js']
+    }
+```
+
 ## Release History
 * 0.1.0: Initial version.
 * 0.1.1: Readme file changes
@@ -84,6 +132,7 @@ Only specifiy options to overwrite
 * 0.1.7: Upgraded grunt to ~0.4.1, [js-beautify](https://npmjs.org/package/js-beautify) to ~1.2.0. Fixed issues [6](https://github.com/vkadam/grunt-jsbeautifier/issues/6), [7](https://github.com/vkadam/grunt-jsbeautifier/issues/7), [8](https://github.com/vkadam/grunt-jsbeautifier/issues/8), [9](https://github.com/vkadam/grunt-jsbeautifier/issues/9)
 * 0.1.8: Upgraded [js-beautify](https://npmjs.org/package/js-beautify) to ~1.3.1. Fixed issues [10](https://github.com/vkadam/grunt-jsbeautifier/issues/10), [12](https://github.com/vkadam/grunt-jsbeautifier/issues/12)
 * 0.1.9: Upgraded [js-beautify](https://npmjs.org/package/js-beautify) to 1.4.0. Fixed issues [13](https://github.com/vkadam/grunt-jsbeautifier/issues/13)
+* 0.1.10: Added verify only mode [15](https://github.com/vkadam/grunt-jsbeautifier/issues/15). This will fail if any file needs beautification.
 
 ## License
 Copyright (c) 2012 Vishal Kadam  

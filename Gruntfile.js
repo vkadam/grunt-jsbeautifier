@@ -4,18 +4,18 @@ module.exports = function(grunt) {
     grunt.initConfig({
         jsbeautifier: {
             default: {
-                src: ['package.json', '<%= jshint.files %>']
+                src: ["package.json", "<%= jshint.files %>", "!test/fixtures/not-been-beautified.js"]
             },
             has_not_been_beautified: {
-                src: ['test/fixtures/not-been-beautified.js'],
+                src: ["test/fixtures/not-been-beautified.js"],
                 options: {
-                    verify_beautification: true
+                    mode: "VERIFY_ONLY"
                 }
             },
             has_been_beautified: {
-                src: ['test/fixtures/been-beautified.js'],
+                src: ["test/fixtures/been-beautified.js"],
                 options: {
-                    verify_beautification: true
+                    mode: "VERIFY_ONLY"
                 }
             },
             options: {
@@ -23,10 +23,10 @@ module.exports = function(grunt) {
             }
         },
         nodeunit: {
-            all: ['test/**/*.js']
+            all: ["test/**/*.js"]
         },
         jshint: {
-            files: ['package.json', 'Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js'],
+            files: ["package.json", "Gruntfile.js", "tasks/**/*.js", "test/**/*.js"],
             options: {
                 curly: true,
                 eqeqeq: true,
@@ -45,13 +45,13 @@ module.exports = function(grunt) {
     });
 
     // Actually load this plugin's task(s).
-    grunt.loadTasks('tasks');
+    grunt.loadTasks("tasks");
 
     // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadNpmTasks("grunt-contrib-jshint");
+    grunt.loadNpmTasks("grunt-contrib-nodeunit");
 
     // By default, beautifiy, lint and run all tests.
-    grunt.registerTask('default', ['jsbeautifier:default', 'jshint', 'nodeunit']);
+    grunt.registerTask("default", ["jshint", "nodeunit", "jsbeautifier:default"]);
 
 };
