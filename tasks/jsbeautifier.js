@@ -24,9 +24,17 @@ module.exports = function(grunt) {
                 var result = beautify(original, params);
                 result += '\n';
                 grunt.verbose.ok();
-                if (original !== result) {
-                    grunt.file.write(src, result);
-                    changedFileCount++;
+                if (params.verify_beautification) {
+                    if (original !== result) {
+                        grunt.fail.warn(src.cyan + ' was not beautified');
+                    }
+
+                } else {
+                    if (original !== result) {
+                        grunt.file.write(src, result);
+                        changedFileCount++;
+                    }
+
                 }
                 fileCount++;
             });

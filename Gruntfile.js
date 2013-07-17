@@ -3,7 +3,24 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         jsbeautifier: {
-            files: ['package.json', '<%= jshint.files %>']
+            default: {
+                src: ['package.json', '<%= jshint.files %>']
+            },
+            has_not_been_beautified: {
+                src: ['test/fixtures/not-been-beautified.js'],
+                options: {
+                    verify_beautification: true
+                }
+            },
+            has_been_beautified: {
+                src: ['test/fixtures/been-beautified.js'],
+                options: {
+                    verify_beautification: true
+                }
+            },
+            options: {
+                indent_size: 4
+            }
         },
         nodeunit: {
             all: ['test/**/*.js']
@@ -35,6 +52,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
     // By default, beautifiy, lint and run all tests.
-    grunt.registerTask('default', ['jsbeautifier', 'jshint', 'nodeunit']);
+    grunt.registerTask('default', ['jsbeautifier:default', 'jshint', 'nodeunit']);
 
 };

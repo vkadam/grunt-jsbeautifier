@@ -1,5 +1,6 @@
 "use strict";
 var grunt = require('grunt');
+var exec = require('child_process').exec;
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -26,11 +27,26 @@ exports['jsbeautifier'] = {
         // setup here
         done();
     },
-    'helper': function(test) {
+    'Verify beautification with unbeautified file': function(test) {
         test.expect(1);
-        // tests here
-        // test.equal(grunt.helper('jsbeautifier'), 'jsbeautifier!!!', 'should return the correct value.');
-        test.equal(true, true);
-        test.done();
+        exec('grunt jsbeautifier:has_not_been_beautified', {
+                cwd: __dirname + '/../'
+            },
+            function(err, stdout, stderr) {
+                test.notEqual(err, null, 'Grunt fails because file has not been beautified');
+                test.done();
+            });
+
+    },
+    'Verify beautification with beautified file': function(test) {
+        test.expect(1);
+        exec('grunt jsbeautifier:has_been_beautified', {
+                cwd: __dirname + '/../'
+            },
+            function(err, stdout, stderr) {
+                test.equal(err, null, 'Grunt passes because file has been beautified');
+                test.done();
+            });
+
     }
 };
