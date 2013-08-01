@@ -2,7 +2,6 @@ module.exports = function(grunt) {
     "use strict";
 
     var path = require('path');
-    var async = require('async');
 
     var js_beautifier = require('js-beautify');
     var jsbeautifier = js_beautifier.js;
@@ -50,7 +49,7 @@ module.exports = function(grunt) {
             grunt.verbose.writeln('Using beautify config: ' + JSON.stringify(config));
 
             var done = this.async();
-            var q = async.queue(function(src, callback) {
+            var q = grunt.util.async.queue(function(src, callback) {
                 if (grunt.file.isDir(src)) {
                     callback();
                     return;

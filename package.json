@@ -23,8 +23,7 @@
     },
     "dependencies": {
         "grunt": "~0.4.1",
-        "js-beautify": "1.4.0",
-        "async": "~0.2.9"
+        "js-beautify": "1.4.0"
     },
     "devDependencies": {
         "grunt-contrib-jshint": "~0.1.1",
