@@ -80,11 +80,16 @@ Default value: `[]`
 
 List of files to be beautified. This option is applicable only for **Multi Task**
 
-#### mode
+#### mode (optional)
 Type: `String`
 Default value: `VERIFY_AND_WRITE`
 
 If mode is "VERIFY_ONLY", then task will fail if at least one file can be beautified. This is useful for pre-commit check.
+
+#### config (optional)
+Type: `String`
+
+The file path (relative to your process's cwd) to the config file. This is usually in `JSON` format, and named `.jsbeautifyrc` (like the one supported by js-beautify itself)
 
 ### Default options from jsbeautifier.org can be used
 
@@ -92,21 +97,41 @@ If mode is "VERIFY_ONLY", then task will fail if at least one file can be beauti
 "jsbeautifier" : {
   files : ["src/**/*.js"],
   options : {
-    indent_size: 4,
-    indent_char: " ",
-    indent_level: 0,
-    indent_with_tabs: false,
-    preserve_newlines: true,
-    max_preserve_newlines: 10,
-    jslint_happy: false,
-    brace_style: "collapse",
-    keep_array_indentation: false,
-    keep_function_indentation: false,
-    space_before_conditional: true,
-    break_chained_methods: false,
-    eval_code: false,
-    wrap_line_length: 0,
-    unescape_strings: false
+    {
+      "html": {
+        "brace_style": "collapse",
+        "indent_char": " ",
+        "indent_scripts": "keep",
+        "indent_size": 4,
+        "max_preserve_newlines": 10,
+        "preserve_newlines": true,
+        "unformatted": ["a", "sub", "sup", "b", "i", "u"],
+        "wrap_line_length": 0
+      },
+      "css": {
+        "indent_char": " ",
+        "indent_size": 4
+      },
+      "js": {
+        "brace_style": "collapse",
+        "break_chained_methods": false,
+        "e4x": false,
+        "eval_code": false,
+        "indent_char": " ",
+        "indent_level": 0,
+        "indent_size": 4,
+        "indent_with_tabs": false,
+        "jslint_happy": false,
+        "keep_array_indentation": false,
+        "keep_function_indentation": false,
+        "max_preserve_newlines": 10,
+        "preserve_newlines": true,
+        "space_before_conditional": true,
+        "space_in_paren": false,
+        "unescape_strings": false,
+        "wrap_line_length": 0
+      }
+    }
   }
 }
 ```

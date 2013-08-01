@@ -27,6 +27,7 @@ exports['jsbeautifier'] = {
         // setup here
         done();
     },
+
     'Verify beautification with unbeautified file': function(test) {
         test.expect(1);
         exec('grunt jsbeautifier:has_not_been_beautified', {
@@ -36,8 +37,8 @@ exports['jsbeautifier'] = {
                 test.notEqual(err, null, 'Grunt fails because file has not been beautified');
                 test.done();
             });
-
     },
+
     'Verify beautification with beautified file': function(test) {
         test.expect(1);
         exec('grunt jsbeautifier:has_been_beautified', {
@@ -47,6 +48,5 @@ exports['jsbeautifier'] = {
                 test.equal(err, null, 'Grunt passes because file has been beautified');
                 test.done();
             });
-
     }
 };
