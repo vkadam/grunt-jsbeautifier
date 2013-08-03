@@ -1,12 +1,12 @@
 module.exports = function(grunt) {
     "use strict";
 
-    var path = require('path');
+    var path = require('path'),
+        js_beautifier = require('js-beautify'),
+        jsbeautifier = js_beautifier.js,
+        cssbeautifier = js_beautifier.css,
+        htmlbeautifier = js_beautifier.html;
 
-    var js_beautifier = require('js-beautify');
-    var jsbeautifier = js_beautifier.js;
-    var cssbeautifier = js_beautifier.css;
-    var htmlbeautifier = js_beautifier.html;
     // Please see the grunt documentation for more information regarding task and
     // helper creation: https://github.com/gruntjs/grunt/blob/master/docs/toc.md
     // ==========================================================================

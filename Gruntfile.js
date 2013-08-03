@@ -4,22 +4,24 @@ module.exports = function(grunt) {
     grunt.initConfig({
         jsbeautifier: {
             default: {
-                src: ["package.json", "<%= jshint.files %>", "!test/fixtures/not-been-beautified.js"]
+                src: ["<%= jshint.files %>", "!test/fixtures/not-been-beautified.js"]
             },
             has_not_been_beautified: {
                 src: ["test/fixtures/not-been-beautified.js"],
                 options: {
-                    mode: "VERIFY_ONLY"
+                    "mode": "VERIFY_ONLY"
                 }
             },
             has_been_beautified: {
                 src: ["test/fixtures/been-beautified.js"],
                 options: {
-                    mode: "VERIFY_ONLY"
+                    "mode": "VERIFY_ONLY"
                 }
             },
             options: {
-                indent_size: 4
+                "js": {
+                    "indent_size": 4
+                }
             }
         },
         nodeunit: {
