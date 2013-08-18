@@ -146,6 +146,7 @@ jsbeautifier: {
 ```
 
 ## Release History
+* 0.2.1: Added Support for flat config file
 * 0.2.0: Added support for css, html and json files
 * 0.1.10: Added verify only mode [15](https://github.com/vkadam/grunt-jsbeautifier/issues/15). This will fail if any file needs beautification.
 * 0.1.9: Upgraded [js-beautify](https://npmjs.org/package/js-beautify) to 1.4.0. Fixed issues [13](https://github.com/vkadam/grunt-jsbeautifier/issues/13)
