@@ -89,7 +89,7 @@ If mode is "VERIFY_ONLY", then task will fail if at least one file can be beauti
 #### config (optional)
 Type: `String`
 
-The file path (relative to your process's cwd) to the config file. This is usually in `JSON` format, and named `.jsbeautifyrc` (like the one supported by js-beautify itself)
+The file path (relative to your process's cwd) to the config file. This is usually in `JSON` format, like the one supported by js-beautify itself
 
 ### Default options from jsbeautifier.org can be used
 

@@ -38,7 +38,18 @@ module.exports = function(grunt) {
 
             var config;
             if (params.config) {
-                config = grunt.file.readJSON(path.resolve(params.config));
+                var baseConfig = grunt.file.readJSON(path.resolve(params.config));
+                config = {
+                    js: {},
+                    css: {},
+                    html: {}
+                };
+                grunt.util._.extend(config.js, baseConfig);
+                grunt.util._.extend(config.css, baseConfig);
+                grunt.util._.extend(config.html, baseConfig);
+                grunt.util._.extend(config.js, baseConfig.js);
+                grunt.util._.extend(config.css, baseConfig.css);
+                grunt.util._.extend(config.html, baseConfig.html);
                 grunt.util._.extend(config.js, params.js);
                 grunt.util._.extend(config.css, params.css);
                 grunt.util._.extend(config.html, params.html);
