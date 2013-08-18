@@ -3,22 +3,22 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         jsbeautifier: {
-            "default": {
+            default: {
                 src: ["<%= jshint.files %>", "!test/fixtures/**"]
             },
-            "has_not_been_beautified": {
+            hasNotBeenBeautified: {
                 src: ["test/fixtures/not-been-beautified.js"],
                 options: {
-                    "mode": "VERIFY_ONLY"
+                    mode: "VERIFY_ONLY"
                 }
             },
-            "has_been_beautified": {
+            hasBeenBeautified: {
                 src: ["test/fixtures/been-beautified.js"],
                 options: {
-                    "mode": "VERIFY_ONLY"
+                    mode: "VERIFY_ONLY"
                 }
             },
-            "config_file": {
+            configFile: {
                 src: ["tmp/config_file/test.js",
                     "tmp/config_file/test.css", "tmp/config_file/test.html"
                 ],
@@ -26,33 +26,33 @@ module.exports = function(grunt) {
                     config: "tmp/config_file/jsbeautifyrc.json"
                 }
             },
-            "config_file_flat": {
-                src: "<%= jsbeautifier.config_file.src %>",
+            configFileFlat: {
+                src: "<%= jsbeautifier.configFile.src %>",
                 options: {
                     config: "tmp/config_file/jsbeautifyrc_flat.json"
                 }
             },
-            "config_file_with_gruntfile_options": {
-                src: "<%= jsbeautifier.config_file.src %>",
+            configFileWithGruntFileOptions: {
+                src: "<%= jsbeautifier.configFile.src %>",
                 options: {
                     config: "tmp/config_file/jsbeautifyrc_flat.json",
                     js: {
-                        "indent_size": 3
+                        indentSize: 3
                     },
                     css: {
-                        "indent_size": 5
+                        indentSize: 5
                     },
                     html: {
-                        "indent_size": 7
+                        indentSize: 7
                     }
                 }
             }
         },
         copy: {
-            "tmp": {
-                "src": "config_file/**",
-                "dest": "tmp",
-                "cwd": "test/fixtures",
+            tmp: {
+                src: "config_file/**",
+                dest: "tmp",
+                cwd: "test/fixtures",
                 expand: true
             }
         },
@@ -74,7 +74,8 @@ module.exports = function(grunt) {
                 boss: true,
                 eqnull: true,
                 node: true,
-                es5: true
+                es5: true,
+                camelcase: true
             }
         }
     });

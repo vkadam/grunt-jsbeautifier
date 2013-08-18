@@ -2,10 +2,10 @@ module.exports = function(grunt) {
     "use strict";
 
     var path = require('path'),
-        js_beautifier = require('js-beautify'),
-        jsbeautifier = js_beautifier.js,
-        cssbeautifier = js_beautifier.css,
-        htmlbeautifier = js_beautifier.html;
+        jsBeautifier = require('js-beautify'),
+        jsbeautifier = jsBeautifier.js,
+        cssbeautifier = jsBeautifier.css,
+        htmlbeautifier = jsBeautifier.html;
 
     // Please see the grunt documentation for more information regarding task and
     // helper creation: https://github.com/gruntjs/grunt/blob/master/docs/toc.md
@@ -28,6 +28,21 @@ module.exports = function(grunt) {
         function verifyAndWriteActionHandler(src, result) {
             grunt.file.write(src, result);
             changedFileCount++;
+        }
+
+        function convertCamelCaseToUnderScore(config) {
+            var underscoreKey;
+            grunt.util._.each([config.js, config.css, config.html], function(conf) {
+                grunt.util._.each(conf, function(value, key) {
+                    underscoreKey = key.replace(/([A-Z])/g, function($1) {
+                        return "_" + $1.toLowerCase();
+                    });
+                    if (key !== underscoreKey) {
+                        conf[underscoreKey] = value;
+                        delete conf[key];
+                    }
+                });
+            });
         }
 
         if (this.filesSrc && this.filesSrc.length > 0) {
@@ -56,6 +71,10 @@ module.exports = function(grunt) {
             } else {
                 config = params;
             }
+
+            grunt.verbose.writeln('Beautify config before converting camelcase to underscore: ' + JSON.stringify(config));
+
+            convertCamelCaseToUnderScore(config);
 
             grunt.verbose.writeln('Using beautify config: ' + JSON.stringify(config));
 

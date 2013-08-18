@@ -5,7 +5,7 @@ var exec = require("child_process").exec;
 exports["mode_test"] = {
     "Verify beautification with unbeautified file": function(test) {
         test.expect(1);
-        exec("grunt jsbeautifier:has_not_been_beautified", {
+        exec("grunt jsbeautifier:hasNotBeenBeautified", {
                 cwd: __dirname + "/../"
             },
             function(err, stdout, stderr) {
@@ -16,7 +16,7 @@ exports["mode_test"] = {
 
     "Verify beautification with beautified file": function(test) {
         test.expect(1);
-        exec("grunt jsbeautifier:has_been_beautified", {
+        exec("grunt jsbeautifier:hasBeenBeautified", {
                 cwd: __dirname + "/../"
             },
             function(err, stdout, stderr) {
