@@ -36,6 +36,10 @@
         "beautify",
         "beautifier",
         "jsbeautifier",
-        "code-quality"
+        "code-quality",
+        "javascript beautify",
+        "html beautify",
+        "css beautify",
+        "json beautify"
     ]
 }
