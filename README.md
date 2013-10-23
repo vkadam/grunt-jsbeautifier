@@ -1,4 +1,4 @@
-# grunt-jsbeautifier
+# grunt-jsbeautifier [![Build Status](https://travis-ci.org/vkadam/grunt-jsbeautifier.png)](https://travis-ci.org/vkadam/grunt-jsbeautifier)
 
 [jsbeautifier.org](http://jsbeautifier.org/) for grunt
 
