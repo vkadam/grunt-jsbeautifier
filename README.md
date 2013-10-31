@@ -146,8 +146,11 @@ jsbeautifier: {
     files: ['foo/*.js', '!foo/bar.js']
 }
 ```
+#### 2. Use specific version of js-beautify
+If you want use specific version of js-beautify instead of latest, please refer to [npm shrinkwrap](https://npmjs.org/doc/shrinkwrap.html)
 
 ## Release History
+* 0.2.3: Always use latest version of js-beautify. [21](https://github.com/vkadam/grunt-jsbeautifier/issues/21)
 * 0.2.2: Configuration is now lint happy. Options can be specified in cameCase, [17](https://github.com/vkadam/grunt-jsbeautifier/issues/17)
 * 0.2.1: Added Support for flat config file
 * 0.2.0: Added support for css, html and json files

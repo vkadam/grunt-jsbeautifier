@@ -1,7 +1,7 @@
 {
     "name": "grunt-jsbeautifier",
     "description": "jsbeautifier.org for grunt",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "homepage": "https://github.com/vkadam/grunt-jsbeautifier",
     "author": {
         "name": "Vishal Kadam",
@@ -23,7 +23,7 @@
     },
     "dependencies": {
         "grunt": "~0.4.1",
-        "js-beautify": "1.4.0"
+        "js-beautify": "~1.4.0"
     },
     "devDependencies": {
         "grunt-contrib-jshint": "0.1.1",
