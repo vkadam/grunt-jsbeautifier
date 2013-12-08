@@ -6,14 +6,14 @@ var grunt = require("grunt"),
 
     function beautifyAndassert(test, task, actualFile, expectedFile) {
         exec("grunt " + task, function() {
-            var actual = grunt.file.read("tmp/config_file/" + actualFile),
-                expected = grunt.file.read("tmp/config_file/" + expectedFile);
+            var actual = grunt.file.read("tmp/configFile/" + actualFile),
+                expected = grunt.file.read("tmp/configFile/" + expectedFile);
             test.equal(actual, expected, "should beautify js " + actualFile + " using config file");
             test.done();
         });
     }
 
-    exports["config_file_test"] = {
+    exports["configFile_test"] = {
         "beautification of js file using settings from config file": function(test) {
             test.expect(1);
             beautifyAndassert(test, "jsbeautifier:configFile", "test.js", "expected/test_expected.js");
@@ -27,7 +27,7 @@ var grunt = require("grunt"),
             beautifyAndassert(test, "jsbeautifier:configFile", "test.html", "expected/test_expected.html");
         }
     };
-    exports["config_file_flat_test"] = {
+    exports["configFile_flat_test"] = {
         "beautification of js file using settings from flat config file": function(test) {
             test.expect(1);
             beautifyAndassert(test, "jsbeautifier:configFileFlat", "test.js", "expected/test_expected.js");
@@ -41,7 +41,7 @@ var grunt = require("grunt"),
             beautifyAndassert(test, "jsbeautifier:configFileFlat", "test.html", "expected/test_expected.html");
         }
     };
-    exports["config_file_with_gruntfile_options_test"] = {
+    exports["configFile_with_gruntfile_options_test"] = {
         "beautification of js file using settings from config file and gruntfile": function(test) {
             test.expect(1);
             beautifyAndassert(test, "jsbeautifier:configFileWithGruntFileOptions", "test.js", "expected/withGruntFileOptions/test_expected.js");

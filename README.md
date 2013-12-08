@@ -19,7 +19,7 @@ grunt.loadNpmTasks('grunt-jsbeautifier');
 ```
 
 ### Grunt `~0.3.0`
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: 
+Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with:
 
 ```
 npm install grunt-jsbeautifier@0.1.4
@@ -92,7 +92,7 @@ Type: `String`
 The file path (relative to your process's cwd) to the config file. This is usually in `JSON` format, like the one supported by js-beautify itself
 
 ### Default options from [js-beautify](https://github.com/einars/js-beautify#options) can be used
-```javascript    
+```javascript
   "jsbeautifier": {
       files: ["src/**/*.js"],
       options: {
@@ -138,7 +138,7 @@ Only specifiy options to overwrite.
 **NOTE:** All options can be specified similar to [js-beautify](https://github.com/einars/js-beautify#options) using underscore.
 
 
-### Tips
+### FAQ/Tips
 #### 1. Exclude files
 All files from foo folder except bar.js
 ```javascript
@@ -149,7 +149,29 @@ jsbeautifier: {
 #### 2. Use specific version of js-beautify
 If you want use specific version of js-beautify instead of latest, please refer to [npm shrinkwrap](https://npmjs.org/doc/shrinkwrap.html)
 
+#### 3. Beautify files other than js, json, css & html
+If you need to beautify files other than js, json, css & html, it can be done by passing **fileTypes**.
+
+For example, beautifying **'.js.erb'** files **along with '.js'**, beautifying **'.less'** files **along with '.css'**, beautifying **'.html.erb'** files **along with '.html'**.
+```
+jsbeautifier: {
+    files: ['foo/css/*.css', 'bar/css/*.less', 'foo/js/*.js', 'bar/js/*.js.erb', 'foo/html/*.html', 'bar/html/*.html.erb'],
+    options: {
+        js: {
+            fileTypes: ['.js.erb']
+        },
+        css: {
+            fileTypes: ['.less']
+        },
+        html: {
+            fileTypes: ['.html.erb']
+        }
+    }
+}
+```
+
 ## Release History
+* 0.2.4: Support custom file types other than js, json, css & html. Use latest versions for dependencies [23](https://github.com/vkadam/grunt-jsbeautifier/issues/23), [26](https://github.com/vkadam/grunt-jsbeautifier/issues/26)
 * 0.2.3: Always use latest version of js-beautify. [21](https://github.com/vkadam/grunt-jsbeautifier/issues/21)
 * 0.2.2: Configuration is now lint happy. Options can be specified in cameCase, [17](https://github.com/vkadam/grunt-jsbeautifier/issues/17)
 * 0.2.1: Added Support for flat config file
@@ -167,5 +189,5 @@ If you want use specific version of js-beautify instead of latest, please refer 
 * 0.1.0: Initial version.
 
 ## License
-Copyright (c) 2012 Vishal Kadam  
+Copyright (c) 2012 Vishal Kadam
 Licensed under the MIT license.

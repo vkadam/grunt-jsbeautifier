@@ -3,6 +3,8 @@ module.exports = function(grunt) {
 
     var path = require('path'),
         jsBeautifier = require('js-beautify'),
+        lodash = require('lodash'),
+        stringUtils = require('underscore.string'),
         jsbeautifier = jsBeautifier.js,
         cssbeautifier = jsBeautifier.css,
         htmlbeautifier = jsBeautifier.html;
@@ -15,7 +17,10 @@ module.exports = function(grunt) {
     grunt.task.registerMultiTask('jsbeautifier', 'jsbeautifier.org for grunt', function() {
 
         var params = this.options({
-            mode: "VERIFY_AND_WRITE"
+            mode: "VERIFY_AND_WRITE",
+            js: {},
+            css: {},
+            html: {}
         });
 
         var fileCount = 0;
@@ -32,12 +37,10 @@ module.exports = function(grunt) {
 
         function convertCamelCaseToUnderScore(config) {
             var underscoreKey;
-            grunt.util._.each([config.js, config.css, config.html], function(conf) {
-                grunt.util._.each(conf, function(value, key) {
-                    underscoreKey = key.replace(/([A-Z])/g, function($1) {
-                        return "_" + $1.toLowerCase();
-                    });
-                    if (key !== underscoreKey) {
+            lodash.forEach([config.js, config.css, config.html], function(conf) {
+                lodash.forEach(conf, function(value, key) {
+                    underscoreKey = stringUtils.underscored(key);
+                    if ("fileTypes" !== key && key !== underscoreKey) {
                         conf[underscoreKey] = value;
                         delete conf[key];
                     }
@@ -59,18 +62,21 @@ module.exports = function(grunt) {
                     css: {},
                     html: {}
                 };
-                grunt.util._.extend(config.js, baseConfig);
-                grunt.util._.extend(config.css, baseConfig);
-                grunt.util._.extend(config.html, baseConfig);
-                grunt.util._.extend(config.js, baseConfig.js);
-                grunt.util._.extend(config.css, baseConfig.css);
-                grunt.util._.extend(config.html, baseConfig.html);
-                grunt.util._.extend(config.js, params.js);
-                grunt.util._.extend(config.css, params.css);
-                grunt.util._.extend(config.html, params.html);
+                lodash.extend(config.js, baseConfig);
+                lodash.extend(config.css, baseConfig);
+                lodash.extend(config.html, baseConfig);
+                lodash.extend(config.js, baseConfig.js);
+                lodash.extend(config.css, baseConfig.css);
+                lodash.extend(config.html, baseConfig.html);
+                lodash.extend(config.js, params.js);
+                lodash.extend(config.css, params.css);
+                lodash.extend(config.html, params.html);
             } else {
                 config = params;
             }
+            config.js.fileTypes = lodash.union(config.js.fileTypes, ['.js', '.json']);
+            config.css.fileTypes = lodash.union(config.css.fileTypes, ['.css']);
+            config.html.fileTypes = lodash.union(config.html.fileTypes, ['.html']);
 
             grunt.verbose.writeln('Beautify config before converting camelcase to underscore: ' + JSON.stringify(config));
 
@@ -104,14 +110,15 @@ module.exports = function(grunt) {
             return;
         }
 
-        var beautifier = setup[0];
-        config = setup[1];
+        var beautifier = setup[0],
+            beautifyConfig = setup[1],
+            addNewLine = setup[2];
 
         var original = grunt.file.read(file);
         grunt.verbose.write('Beautifing ' + file.cyan + '...');
-        var result = beautifier(original, config);
+        var result = beautifier(original, beautifyConfig);
         // jsbeautifier would skip the line terminator for js files
-        if (['.js', '.json'].indexOf(path.extname(file)) !== -1) {
+        if (addNewLine) {
             result += '\n';
         }
         grunt.verbose.ok();
@@ -121,18 +128,33 @@ module.exports = function(grunt) {
         }
     }
 
+    function getFileType(file, config) {
+        var fileType = null,
+            fileMapping = {
+                'js': config.js.fileTypes,
+                'css': config.css.fileTypes,
+                'html': config.html.fileTypes
+            };
+        lodash.forEach(fileMapping, function(extensions, type) {
+            fileType = type;
+            return -1 === lodash.findIndex(extensions, function(ext) {
+                return stringUtils.endsWith(file, ext);
+            });
+        });
+        return fileType;
+    }
+
     function getBeautifierSetup(file, config) {
-        var ext = path.extname(file);
-        switch (ext) {
-            case '.js':
-            case '.json':
-                return [jsbeautifier, config.js];
-            case '.css':
+        var fileType = getFileType(file, config);
+        switch (fileType) {
+            case 'js':
+                return [jsbeautifier, config.js, true];
+            case 'css':
                 return [cssbeautifier, config.css];
-            case '.html':
+            case 'html':
                 return [htmlbeautifier, config.html];
             default:
-                grunt.fail.warn('Cannot beautify ' + file.cyan + ' (only .js, .css and .html are beautifiable)');
+                grunt.fail.warn('Cannot beautify ' + file.cyan + ' (only js, css and html files can be beautified)');
                 return null;
         }
     }

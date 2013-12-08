@@ -18,24 +18,40 @@ module.exports = function(grunt) {
                     mode: "VERIFY_ONLY"
                 }
             },
-            configFile: {
-                src: ["tmp/config_file/test.js",
-                    "tmp/config_file/test.css", "tmp/config_file/test.html"
+            fileMapping: {
+                src: ["tmp/fileMapping/not-beautified.js.erb",
+                    "tmp/fileMapping/not-beautified.css.erb", "tmp/fileMapping/not-beautified.html.erb"
                 ],
                 options: {
-                    config: "tmp/config_file/jsbeautifyrc.json"
+                    js: {
+                        fileTypes: [".js.erb"]
+                    },
+                    css: {
+                        fileTypes: [".css.erb"]
+                    },
+                    html: {
+                        fileTypes: [".html.erb"]
+                    }
+                }
+            },
+            configFile: {
+                src: ["tmp/configFile/test.js",
+                    "tmp/configFile/test.css", "tmp/configFile/test.html"
+                ],
+                options: {
+                    config: "tmp/configFile/jsbeautifyrc.json"
                 }
             },
             configFileFlat: {
                 src: "<%= jsbeautifier.configFile.src %>",
                 options: {
-                    config: "tmp/config_file/jsbeautifyrc_flat.json"
+                    config: "tmp/configFile/jsbeautifyrc_flat.json"
                 }
             },
             configFileWithGruntFileOptions: {
                 src: "<%= jsbeautifier.configFile.src %>",
                 options: {
-                    config: "tmp/config_file/jsbeautifyrc_flat.json",
+                    config: "tmp/configFile/jsbeautifyrc_flat.json",
                     js: {
                         indentSize: 3
                     },
@@ -50,7 +66,7 @@ module.exports = function(grunt) {
         },
         copy: {
             tmp: {
-                src: "config_file/**",
+                src: ["configFile/**", "fileMapping/**"],
                 dest: "tmp",
                 cwd: "test/fixtures",
                 expand: true
@@ -74,7 +90,6 @@ module.exports = function(grunt) {
                 boss: true,
                 eqnull: true,
                 node: true,
-                es5: true,
                 camelcase: true
             }
         }
