@@ -11,7 +11,7 @@ exports["mode_test"] = {
             function(err, stdout, stderr) {
                 test.notEqual(err, null, "Grunt fails because file has not been beautified");
                 test.ok(stdout.indexOf("are not beautified") > -1, "Error message is logged");
-                test.ok(stdout.indexOf("test/fixtures/verifyMode/not-been-beautified.js") > -1, "Error message with filename is logged");
+                test.ok(stdout.indexOf("tmp/verifyMode/not-been-beautified.js") > -1, "Error message with filename is logged");
                 test.done();
             });
     },
@@ -24,8 +24,8 @@ exports["mode_test"] = {
             function(err, stdout, stderr) {
                 test.notEqual(err, null, "Grunt fails because file has not been beautified");
                 test.ok(stdout.indexOf("are not beautified") > -1, "Error message is logged");
-                test.ok(stdout.indexOf("test/fixtures/verifyMode/not-been-beautified.js") > -1, "Error message with js filename is logged");
-                test.ok(stdout.indexOf("test/fixtures/verifyMode/not-been-beautified.css") > -1, "Error message with css filename is logged");
+                test.ok(stdout.indexOf("tmp/verifyMode/not-been-beautified.js") > -1, "Error message with js filename is logged");
+                test.ok(stdout.indexOf("tmp/verifyMode/not-been-beautified.css") > -1, "Error message with css filename is logged");
                 test.done();
             });
     },

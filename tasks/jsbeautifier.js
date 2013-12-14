@@ -18,6 +18,7 @@ module.exports = function(grunt) {
 
         var params = this.options({
             mode: "VERIFY_AND_WRITE",
+            dist: "",
             js: {},
             css: {},
             html: {}
@@ -32,7 +33,8 @@ module.exports = function(grunt) {
         }
 
         function verifyAndWriteActionHandler(src, result) {
-            grunt.file.write(src, result);
+            grunt.verbose.writeln(params.dist + src);
+            grunt.file.write(params.dist + src, result);
             changedFileCount++;
         }
 
@@ -50,6 +52,12 @@ module.exports = function(grunt) {
         }
 
         if (this.filesSrc && this.filesSrc.length > 0) {
+            if (!lodash.isEmpty(params.dist)) {
+                grunt.verbose.writeln('All beautified files will be stored under "' + params.dist + '" folder');
+                if (!stringUtils.endsWith(params.dist, "/")) {
+                    params.dist += "/";
+                }
+            }
             grunt.verbose.writeln('Beautifing using filesSrc with ' + this.filesSrc.length.toString().cyan + ' files...');
 
             grunt.verbose.writeln('Using mode="' + params.mode + '"...');
