@@ -86,11 +86,11 @@ Default value: `VERIFY_AND_WRITE`
 
 If mode is "VERIFY_ONLY", then task will fail if at least one file can be beautified. This is useful for pre-commit check.
 
-#### options.dist (optional)
+#### options.dest (optional)
 Type: `String`
 Default value: `''`
 
-All beautified file will be stored under "dist".
+All beautified file will be stored under "dest".
 
 #### options.config (optional)
 Type: `String`
@@ -177,6 +177,7 @@ jsbeautifier: {
 ```
 
 ## Release History
+* 0.2.6: Bumped version after for changing dist to dest
 * 0.2.5: Support dist folder and show all failed files in VERIFY_MODE [22](https://github.com/vkadam/grunt-jsbeautifier/issues/22), [24](https://github.com/vkadam/grunt-jsbeautifier/issues/24), [25](https://github.com/vkadam/grunt-jsbeautifier/issues/25)
 * 0.2.4: Support custom file types other than js, json, css & html. Use latest versions for dependencies [23](https://github.com/vkadam/grunt-jsbeautifier/issues/23), [26](https://github.com/vkadam/grunt-jsbeautifier/issues/26)
 * 0.2.3: Always use latest version of js-beautify. [21](https://github.com/vkadam/grunt-jsbeautifier/issues/21)

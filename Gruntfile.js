@@ -63,10 +63,10 @@ module.exports = function(grunt) {
                     }
                 }
             },
-            dist: {
+            dest: {
                 src: ["tmp/not-been-beautified.js"],
                 options: {
-                    dist: "dist"
+                    dest: "dest"
                 }
             }
         },
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
                 expand: true
             }
         },
-        clean: ["tmp", "dist"],
+        clean: ["tmp", "dest"],
         nodeunit: {
             all: ["test/**/*.js"]
         },

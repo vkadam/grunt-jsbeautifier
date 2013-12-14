@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 
         var params = this.options({
             mode: "VERIFY_AND_WRITE",
-            dist: "",
+            dest: "",
             js: {},
             css: {},
             html: {}
@@ -33,8 +33,8 @@ module.exports = function(grunt) {
         }
 
         function verifyAndWriteActionHandler(src, result) {
-            grunt.verbose.writeln(params.dist + src);
-            grunt.file.write(params.dist + src, result);
+            grunt.verbose.writeln(params.dest + src);
+            grunt.file.write(params.dest + src, result);
             changedFileCount++;
         }
 
@@ -52,10 +52,10 @@ module.exports = function(grunt) {
         }
 
         if (this.filesSrc && this.filesSrc.length > 0) {
-            if (!lodash.isEmpty(params.dist)) {
-                grunt.verbose.writeln('All beautified files will be stored under "' + params.dist + '" folder');
-                if (!stringUtils.endsWith(params.dist, "/")) {
-                    params.dist += "/";
+            if (!lodash.isEmpty(params.dest)) {
+                grunt.verbose.writeln('All beautified files will be stored under "' + params.dest + '" folder');
+                if (!stringUtils.endsWith(params.dest, "/")) {
+                    params.dest += "/";
                 }
             }
             grunt.verbose.writeln('Beautifing using filesSrc with ' + this.filesSrc.length.toString().cyan + ' files...');
