@@ -171,6 +171,7 @@ jsbeautifier: {
 ```
 
 ## Release History
+* 0.2.5: Show all files in VERIFY_MODE [24](https://github.com/vkadam/grunt-jsbeautifier/issues/24), [25](https://github.com/vkadam/grunt-jsbeautifier/issues/25)
 * 0.2.4: Support custom file types other than js, json, css & html. Use latest versions for dependencies [23](https://github.com/vkadam/grunt-jsbeautifier/issues/23), [26](https://github.com/vkadam/grunt-jsbeautifier/issues/26)
 * 0.2.3: Always use latest version of js-beautify. [21](https://github.com/vkadam/grunt-jsbeautifier/issues/21)
 * 0.2.2: Configuration is now lint happy. Options can be specified in cameCase, [17](https://github.com/vkadam/grunt-jsbeautifier/issues/17)

@@ -7,13 +7,13 @@ module.exports = function(grunt) {
                 src: ["<%= jshint.files %>", "!test/fixtures/**"]
             },
             hasNotBeenBeautified: {
-                src: ["test/fixtures/not-been-beautified.js"],
+                src: ["test/fixtures/verifyMode/not-been-beautified.js", "test/fixtures/verifyMode/not-been-beautified.css"],
                 options: {
                     mode: "VERIFY_ONLY"
                 }
             },
             hasBeenBeautified: {
-                src: ["test/fixtures/been-beautified.js"],
+                src: ["test/fixtures/verifyMode/been-beautified.js"],
                 options: {
                     mode: "VERIFY_ONLY"
                 }

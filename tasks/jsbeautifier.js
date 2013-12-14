@@ -23,11 +23,12 @@ module.exports = function(grunt) {
             html: {}
         });
 
-        var fileCount = 0;
-        var changedFileCount = 0;
+        var fileCount = 0,
+            changedFileCount = 0,
+            unverifiedFiles = [];
 
         function verifyActionHandler(src) {
-            grunt.fail.warn(src.cyan + ' was not beautified');
+            unverifiedFiles.push(src);
         }
 
         function verifyAndWriteActionHandler(src, result) {
@@ -96,6 +97,10 @@ module.exports = function(grunt) {
                 callback();
             }, 10);
             q.drain = function() {
+                if (unverifiedFiles.length) {
+                    grunt.fail.warn('The following files are not beautified:\n' +
+                        unverifiedFiles.join('\n').cyan + '\n');
+                }
                 grunt.log.write('Beautified ' + fileCount.toString().cyan + ' files, changed ' + changedFileCount.toString().cyan + ' files...');
                 grunt.log.ok();
                 done();
