@@ -80,19 +80,19 @@ Default value: `[]`
 
 List of files to be beautified. This option is applicable only for **Multi Task**
 
-#### mode (optional)
+#### options.mode (optional)
 Type: `String`
 Default value: `VERIFY_AND_WRITE`
 
 If mode is "VERIFY_ONLY", then task will fail if at least one file can be beautified. This is useful for pre-commit check.
 
-#### dist (optional)
+#### options.dist (optional)
 Type: `String`
 Default value: `''`
 
 All beautified file will be stored under "dist".
 
-#### config (optional)
+#### options.config (optional)
 Type: `String`
 
 The file path (relative to your process's cwd) to the config file. This is usually in `JSON` format, like the one supported by js-beautify itself
