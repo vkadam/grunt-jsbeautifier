@@ -92,10 +92,15 @@ Default value: `''`
 
 All beautified file will be stored under "dest".
 
-#### options.config (optional)
-Type: `String`
+#### options.jsbeautifyrc (optional)
+Type: `String` or `true`
+Default value: `null`
 
-The file path (relative to your process's cwd) to the config file. This is usually in `JSON` format, like the one supported by js-beautify itself
+_Alias:_ options.config (for version < 0.2.7)
+
+If set to `true`, config will be sent to [jsbeautify](https://github.com/einars/js-beautify#options) from `.jsbeautifyrc` files relative to the flies being beautified.
+
+If a filename is specified, options and globals defined therein will be used. The `jsbeautifyrc` file must be valid JSON and looks like the one supported by js-beautify itself.
 
 ### Default options from [js-beautify](https://github.com/einars/js-beautify#options) can be used
 ```javascript

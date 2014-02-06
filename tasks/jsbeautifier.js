@@ -58,7 +58,7 @@ module.exports = function(grunt) {
                     params.dest += "/";
                 }
             }
-            grunt.verbose.writeln('Beautifing using filesSrc with ' + this.filesSrc.length.toString().cyan + ' files...');
+            grunt.verbose.writeln('Beautifying using filesSrc with ' + this.filesSrc.length.toString().cyan + ' files...');
 
             grunt.verbose.writeln('Using mode="' + params.mode + '"...');
             var actionHandler = "VERIFY_ONLY" === params.mode ? verifyActionHandler : verifyAndWriteActionHandler;
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
             addNewLine = setup[2];
 
         var original = grunt.file.read(file);
-        grunt.verbose.write('Beautifing ' + file.cyan + '...');
+        grunt.verbose.write('Beautifying ' + file.cyan + '...');
         var result = beautifier(original, beautifyConfig);
         // jsbeautifier would skip the line terminator for js files
         if (addNewLine) {

@@ -24,13 +24,16 @@ module.exports = function(grunt) {
                 ],
                 options: {
                     js: {
-                        fileTypes: [".js.erb"]
+                        fileTypes: [".js.erb"],
+                        maxPreserveNewlines: 2
                     },
                     css: {
                         fileTypes: [".css.erb"]
                     },
                     html: {
-                        fileTypes: [".html.erb"]
+                        fileTypes: [".html.erb"],
+                        preserveNewLines: true,
+                        maxPreserveNewlines: 1
                     }
                 }
             },
