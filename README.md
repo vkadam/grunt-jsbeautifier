@@ -15,7 +15,7 @@ npm install grunt-jsbeautifier --save-dev
 One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```
-grunt.loadNpmTasks('grunt-jsbeautifier');
+grunt.loadNpmTasks("grunt-jsbeautifier");
 ```
 
 ### Grunt `~0.3.0`
@@ -28,7 +28,7 @@ npm install grunt-jsbeautifier@0.1.4
 Then add this line to your project's `grunt.js` gruntfile:
 
 ```
-grunt.loadNpmTasks('grunt-jsbeautifier');
+grunt.loadNpmTasks("grunt-jsbeautifier");
 ```
 
 [grunt]: http://gruntjs.com/
@@ -88,7 +88,7 @@ If mode is "VERIFY_ONLY", then task will fail if at least one file can be beauti
 
 #### options.dest (optional)
 Type: `String`
-Default value: `''`
+Default value: `""`
 
 All beautified file will be stored under "dest".
 
@@ -154,7 +154,7 @@ Only specifiy options to overwrite.
 All files from foo folder except bar.js
 ```javascript
 jsbeautifier: {
-    files: ['foo/*.js', '!foo/bar.js']
+    files: ["foo/*.js", "!foo/bar.js"]
 }
 ```
 #### 2. Use specific version of js-beautify
@@ -163,19 +163,19 @@ If you want use specific version of js-beautify instead of latest, please refer 
 #### 3. Beautify files other than js, json, css & html
 If you need to beautify files other than js, json, css & html, it can be done by passing **fileTypes**.
 
-For example, beautifying **'.js.erb'** files **along with '.js'**, beautifying **'.less'** files **along with '.css'**, beautifying **'.html.erb'** files **along with '.html'**.
+For example, beautifying **".js.erb"** files **along with ".js"**, beautifying **".less"** files **along with ".css"**, beautifying **".html.erb"** files **along with ".html"**.
 ```
 jsbeautifier: {
-    files: ['foo/css/*.css', 'bar/css/*.less', 'foo/js/*.js', 'bar/js/*.js.erb', 'foo/html/*.html', 'bar/html/*.html.erb'],
+    files: ["foo/css/*.css", "bar/css/*.less", "foo/js/*.js", "bar/js/*.js.erb", "foo/html/*.html", "bar/html/*.html.erb"],
     options: {
         js: {
-            fileTypes: ['.js.erb']
+            fileTypes: [".js.erb"]
         },
         css: {
-            fileTypes: ['.less']
+            fileTypes: [".less"]
         },
         html: {
-            fileTypes: ['.html.erb']
+            fileTypes: [".html.erb"]
         }
     }
 }

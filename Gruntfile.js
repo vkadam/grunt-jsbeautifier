@@ -1,72 +1,72 @@
-'use strict';
+"use strict";
 
 module.exports = function(grunt) {
     grunt.initConfig({
         jshint: {
-            files: ['package.json', 'Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js'],
+            files: ["package.json", "Gruntfile.js", "tasks/**/*.js", "test/**/*.js"],
             options: {
                 jshintrc: true
             }
         },
         jsbeautifier: {
             default: {
-                src: ['<%= jshint.files %>', '!test/fixtures/**', 'package.json']
+                src: ["<%= jshint.files %>", "!test/fixtures/**", "package.json"]
             },
             successWithForce: {
-                src: ['tmp/verifyMode/not-been-beautified.js', 'tmp/verifyMode/not-been-beautified.css'],
+                src: ["tmp/verifyMode/not-been-beautified.js", "tmp/verifyMode/not-been-beautified.css"],
                 options: {
-                    mode: 'VERIFY_ONLY'
+                    mode: "VERIFY_ONLY"
                 }
             },
             hasNotBeenBeautified: {
-                src: ['tmp/verifyMode/not-been-beautified.js', 'tmp/verifyMode/not-been-beautified.css'],
+                src: ["tmp/verifyMode/not-been-beautified.js", "tmp/verifyMode/not-been-beautified.css"],
                 options: {
-                    mode: 'VERIFY_ONLY'
+                    mode: "VERIFY_ONLY"
                 }
             },
             hasBeenBeautified: {
-                src: ['tmp/verifyMode/been-beautified.js'],
+                src: ["tmp/verifyMode/been-beautified.js"],
                 options: {
-                    mode: 'VERIFY_ONLY'
+                    mode: "VERIFY_ONLY"
                 }
             },
             fileMapping: {
-                src: ['tmp/fileMapping/not-beautified.js.erb',
-                    'tmp/fileMapping/not-beautified.css.erb', 'tmp/fileMapping/not-beautified.html.erb'
+                src: ["tmp/fileMapping/not-beautified.js.erb",
+                    "tmp/fileMapping/not-beautified.css.erb", "tmp/fileMapping/not-beautified.html.erb"
                 ],
                 options: {
                     js: {
-                        fileTypes: ['.js.erb'],
+                        fileTypes: [".js.erb"],
                         maxPreserveNewlines: 2
                     },
                     css: {
-                        fileTypes: ['.css.erb']
+                        fileTypes: [".css.erb"]
                     },
                     html: {
-                        fileTypes: ['.html.erb'],
+                        fileTypes: [".html.erb"],
                         preserveNewLines: true,
                         maxPreserveNewlines: 1
                     }
                 }
             },
             configFile: {
-                src: ['tmp/configFile/test.js',
-                    'tmp/configFile/test.css', 'tmp/configFile/test.html'
+                src: ["tmp/configFile/test.js",
+                    "tmp/configFile/test.css", "tmp/configFile/test.html"
                 ],
                 options: {
-                    config: 'tmp/configFile/jsbeautifyrc.json'
+                    config: "tmp/configFile/jsbeautifyrc.json"
                 }
             },
             configFileFlat: {
-                src: '<%= jsbeautifier.configFile.src %>',
+                src: "<%= jsbeautifier.configFile.src %>",
                 options: {
-                    config: 'tmp/configFile/jsbeautifyrc_flat.json'
+                    config: "tmp/configFile/jsbeautifyrc_flat.json"
                 }
             },
             configFileWithGruntFileOptions: {
-                src: '<%= jsbeautifier.configFile.src %>',
+                src: "<%= jsbeautifier.configFile.src %>",
                 options: {
-                    config: 'tmp/configFile/jsbeautifyrc_flat.json',
+                    config: "tmp/configFile/jsbeautifyrc_flat.json",
                     js: {
                         indentSize: 3
                     },
@@ -79,36 +79,36 @@ module.exports = function(grunt) {
                 }
             },
             dest: {
-                src: ['tmp/not-been-beautified.js'],
+                src: ["tmp/not-been-beautified.js"],
                 options: {
-                    dest: 'dest'
+                    dest: "dest"
                 }
             }
         },
         copy: {
             tmp: {
-                src: ['**'],
-                dest: 'tmp',
-                cwd: 'test/fixtures',
+                src: ["**"],
+                dest: "tmp",
+                cwd: "test/fixtures",
                 expand: true
             }
         },
-        clean: ['tmp', 'dest'],
+        clean: ["tmp", "dest"],
         nodeunit: {
-            all: ['test/**/*.js']
+            all: ["test/**/*.js"]
         }
     });
 
-    // Actually load this plugin's task(s).
-    grunt.loadTasks('tasks');
+    // Actually load this plugin"s task(s).
+    grunt.loadTasks("tasks");
 
     // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-nodeunit');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks("grunt-contrib-jshint");
+    grunt.loadNpmTasks("grunt-contrib-nodeunit");
+    grunt.loadNpmTasks("grunt-contrib-copy");
+    grunt.loadNpmTasks("grunt-contrib-clean");
 
     // By default, beautifiy, lint and run all tests.
-    grunt.registerTask('test', ['jshint', 'copy', 'nodeunit', 'clean']);
-    grunt.registerTask('default', ['test', 'jsbeautifier:default']);
+    grunt.registerTask("test", ["jshint", "copy", "nodeunit", "clean"]);
+    grunt.registerTask("default", ["test", "jsbeautifier:default"]);
 };
