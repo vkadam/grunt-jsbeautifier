@@ -1,6 +1,7 @@
 "use strict";
 
 module.exports = function(grunt) {
+    require('load-grunt-tasks')(grunt);
     grunt.initConfig({
         jshint: {
             files: ["package.json", "Gruntfile.js", "tasks/**/*.js", "test/**/*.js"],
@@ -96,17 +97,23 @@ module.exports = function(grunt) {
         clean: ["tmp", "dest"],
         nodeunit: {
             all: ["test/**/*.js"]
+        },
+        devUpdate: {
+            main: {
+                options: {
+                    updateType: 'force', //just report outdated packages
+                    reportUpdated: false, //don't report up-to-date packages
+                    packages: {
+                        devDependencies: true, //only check for devDependencies
+                        dependencies: true
+                    }
+                }
+            }
         }
     });
 
     // Actually load this plugin"s task(s).
     grunt.loadTasks("tasks");
-
-    // These plugins provide necessary tasks.
-    grunt.loadNpmTasks("grunt-contrib-jshint");
-    grunt.loadNpmTasks("grunt-contrib-nodeunit");
-    grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-contrib-clean");
 
     // By default, beautifiy, lint and run all tests.
     grunt.registerTask("test", ["jshint", "copy", "nodeunit", "clean"]);
