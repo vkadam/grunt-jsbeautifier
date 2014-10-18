@@ -1,5 +1,6 @@
+'use strict';
+
 module.exports = function(grunt) {
-    "use strict";
 
     var path = require('path'),
         jsBeautifier = require('js-beautify'),
@@ -17,8 +18,8 @@ module.exports = function(grunt) {
     grunt.task.registerMultiTask('jsbeautifier', 'jsbeautifier.org for grunt', function() {
 
         var params = this.options({
-            mode: "VERIFY_AND_WRITE",
-            dest: "",
+            mode: 'VERIFY_AND_WRITE',
+            dest: '',
             js: {},
             css: {},
             html: {}
@@ -43,7 +44,7 @@ module.exports = function(grunt) {
             lodash.forEach([config.js, config.css, config.html], function(conf) {
                 lodash.forEach(conf, function(value, key) {
                     underscoreKey = stringUtils.underscored(key);
-                    if ("fileTypes" !== key && key !== underscoreKey) {
+                    if ('fileTypes' !== key && key !== underscoreKey) {
                         conf[underscoreKey] = value;
                         delete conf[key];
                     }
@@ -54,14 +55,14 @@ module.exports = function(grunt) {
         if (this.filesSrc && this.filesSrc.length > 0) {
             if (!lodash.isEmpty(params.dest)) {
                 grunt.verbose.writeln('All beautified files will be stored under "' + params.dest + '" folder');
-                if (!stringUtils.endsWith(params.dest, "/")) {
-                    params.dest += "/";
+                if (!stringUtils.endsWith(params.dest, '/')) {
+                    params.dest += '/';
                 }
             }
             grunt.verbose.writeln('Beautifying using filesSrc with ' + this.filesSrc.length.toString().cyan + ' files...');
 
             grunt.verbose.writeln('Using mode="' + params.mode + '"...');
-            var actionHandler = "VERIFY_ONLY" === params.mode ? verifyActionHandler : verifyAndWriteActionHandler;
+            var actionHandler = 'VERIFY_ONLY' === params.mode ? verifyActionHandler : verifyAndWriteActionHandler;
 
             var config;
             if (params.config) {
