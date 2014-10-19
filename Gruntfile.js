@@ -117,5 +117,5 @@ module.exports = function(grunt) {
 
     // By default, beautify, lint and run all tests.
     grunt.registerTask("test", ["jshint", "copy", "nodeunit", "clean"]);
-    grunt.registerTask("default", ["test", "jsbeautifier:default"]);
+    grunt.registerTask("default", ["devUpdate", "test", "jsbeautifier:default"]);
 };
