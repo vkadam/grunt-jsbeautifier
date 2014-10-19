@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
         jshint: {
-            files: ["package.json", "Gruntfile.js", "tasks/**/*.js", "test/**/*.js"],
+            files: ["package.json", "Gruntfile.js", "lib/**/*.js", "tasks/**/*.js", "test/**/*.js"],
             options: {
                 jshintrc: true
             }
@@ -101,10 +101,10 @@ module.exports = function(grunt) {
         devUpdate: {
             main: {
                 options: {
-                    updateType: 'force', //just report outdated packages
-                    reportUpdated: false, //don't report up-to-date packages
+                    updateType: 'force',
+                    reportUpdated: false,
                     packages: {
-                        devDependencies: true, //only check for devDependencies
+                        devDependencies: true,
                         dependencies: true
                     }
                 }
@@ -115,7 +115,7 @@ module.exports = function(grunt) {
     // Actually load this plugin"s task(s).
     grunt.loadTasks("tasks");
 
-    // By default, beautifiy, lint and run all tests.
+    // By default, beautify, lint and run all tests.
     grunt.registerTask("test", ["jshint", "copy", "nodeunit", "clean"]);
     grunt.registerTask("default", ["test", "jsbeautifier:default"]);
 };
