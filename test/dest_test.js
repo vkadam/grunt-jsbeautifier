@@ -7,8 +7,8 @@ exports.dest_test = {
     "Verify beautification with dest folder": function(test) {
         test.expect(1);
         exec("grunt jsbeautifier:dest", function() {
-            var actual = grunt.file.read("dest/tmp/not-been-beautified.js"),
-                expected = grunt.file.read("test/fixtures/been-beautified.js");
+            var actual = grunt.file.read("dest/tmp/common/not-been-beautified.js"),
+                expected = grunt.file.read("test/fixtures/common/been-beautified.js");
             test.equal(actual, expected, "should beautify js using config file");
             test.done();
         });

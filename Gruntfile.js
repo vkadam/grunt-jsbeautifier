@@ -80,7 +80,7 @@ module.exports = function(grunt) {
                 }
             },
             dest: {
-                src: ["tmp/not-been-beautified.js"],
+                src: ["tmp/common/not-been-beautified.js"],
                 options: {
                     dest: "dest"
                 }
@@ -96,7 +96,15 @@ module.exports = function(grunt) {
         },
         clean: ["tmp", "dest"],
         nodeunit: {
-            all: ["test/**/*.js"]
+            all: ["test/**/*_test.js"]
+        },
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec'
+                },
+                src: ['test/**/*_spec.js']
+            }
         },
         devUpdate: {
             main: {
@@ -116,6 +124,6 @@ module.exports = function(grunt) {
     grunt.loadTasks("tasks");
 
     // By default, beautify, lint and run all tests.
-    grunt.registerTask("test", ["jshint", "copy", "nodeunit", "clean"]);
+    grunt.registerTask("test", ["jshint", "copy", "nodeunit", "clean", "mochaTest"]);
     grunt.registerTask("default", ["devUpdate", "test", "jsbeautifier:default"]);
 };

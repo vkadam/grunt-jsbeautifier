@@ -27,6 +27,14 @@
         "define",
         "exports",
         "module",
-        "__dirname"
+        "__dirname",
+        "describe",
+        "xdescribe",
+        "before",
+        "beforeEach",
+        "after",
+        "afterEach",
+        "it",
+        "xit"
     ]
 }
