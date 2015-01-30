@@ -7,6 +7,7 @@ var chai = require("chai"),
     _ = grunt.util._,
     JsBeautifierTask = require("../lib/jsbeautifier");
 
+chai.use(require('chai-fs'));
 /*jshint -W030*/
 describe("JsBeautifier: Destination test", function() {
     var createMockTask;
@@ -39,9 +40,9 @@ describe("JsBeautifier: Destination test", function() {
     });
 
     function assertBeautifiedFile() {
-        var actual = grunt.file.read("dest/tmp/common/not-been-beautified.js"),
+        var actual = "dest/tmp/common/not-been-beautified.js",
             expected = grunt.file.read("tmp/common/been-beautified.js");
-        expect(actual, expected, "should beautify js and put into dest folder");
+        expect(actual).to.have.content(expected, "should beautify js and put into dest folder");
     }
 
     it("Verify beautification with dest folder", function(done) {

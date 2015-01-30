@@ -7,6 +7,7 @@ var chai = require("chai"),
     _ = grunt.util._,
     JsBeautifierTask = require("../lib/jsbeautifier");
 
+chai.use(require('chai-fs'));
 /*jshint -W030*/
 describe("JsBeautifier: Config file test", function() {
     var createMockTask;
@@ -38,9 +39,9 @@ describe("JsBeautifier: Config file test", function() {
     });
 
     function assertBeautifiedFile(actualFile, expectedFile) {
-        var actual = grunt.file.read("tmp/configFile/" + actualFile),
+        var actual = "tmp/configFile/" + actualFile,
             expected = grunt.file.read("tmp/configFile/" + expectedFile);
-        expect(actual, expected, "should beautify js " + actualFile + " using config file");
+        expect(actual).to.have.content(expected, "should beautify js " + actualFile + " using config file");
     }
 
     it("beautification of js, css & html file using settings from config file", function(done) {
@@ -77,9 +78,6 @@ describe("JsBeautifier: Config file test", function() {
         var task;
         mockTask = createMockTask({
             config: "tmp/configFile/jsbeautifyrc_flat.json",
-            js: {
-                indentSize: 3
-            },
             css: {
                 indentSize: 5
             },

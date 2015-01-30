@@ -7,6 +7,7 @@ var chai = require("chai"),
     _ = grunt.util._,
     JsBeautifierTask = require("../lib/jsbeautifier");
 
+chai.use(require('chai-fs'));
 /*jshint -W030*/
 describe("JsBeautifier: FileMapping test", function() {
     var createMockTask;
@@ -38,9 +39,9 @@ describe("JsBeautifier: FileMapping test", function() {
     });
 
     function assertBeautifiedFile(actualFile, expectedFile) {
-        var actual = grunt.file.read("tmp/fileMapping/" + actualFile),
+        var actual = "tmp/fileMapping/" + actualFile,
             expected = grunt.file.read("tmp/fileMapping/" + expectedFile);
-        expect(actual, expected, "should beautify js " + actualFile + " using config file");
+        expect(actual).to.have.content(expected, "should beautify js " + actualFile + " using config file");
     }
 
     it("beautification of js, css & html file using file mapping", function(done) {

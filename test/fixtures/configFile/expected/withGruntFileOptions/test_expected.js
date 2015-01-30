@@ -1,5 +1,5 @@
 /* jshint unused: false */
 var temp = {
-   hello: 1,
-   world: 2
+ hello: 1,
+ world: 2
 };
