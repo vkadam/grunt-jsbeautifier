@@ -9,7 +9,7 @@ var chai = require("chai"),
 
 chai.use(require('chai-fs'));
 /*jshint -W030*/
-describe("JsBeautifier: Destination test", function() {
+describe("JsBeautifier: Javascript options", function() {
     var mockTask;
 
     beforeEach(function(done) {
@@ -20,19 +20,20 @@ describe("JsBeautifier: Destination test", function() {
     afterEach(function() {
         mockTask = null;
         grunt.file.delete("tmp");
-        grunt.file.delete("dest");
     });
 
     function assertBeautifiedFile() {
-        var actual = "dest/tmp/common/not-been-beautified.js",
-            expected = grunt.file.read("tmp/common/been-beautified.js");
-        expect(actual).to.have.content(expected, "should beautify js and put into dest folder");
+        var actual = "tmp/common/not-been-beautified.js",
+            expected = grunt.file.read("tmp/common/no-newline-beautified.js");
+        expect(actual).to.have.content(expected, "should beautify js without newline");
     }
 
-    it("Verify beautification with dest folder", function(done) {
+    it("Verify beautification with no new line for javascript file", function(done) {
         var task;
         mockTask = createMockTask({
-            dest: "dest"
+            js: {
+                endWithNewline: false
+            }
         }, ["tmp/common/not-been-beautified.js"], function() {
             assertBeautifiedFile();
             done();

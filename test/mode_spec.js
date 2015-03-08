@@ -4,30 +4,14 @@ var chai = require("chai"),
     expect = chai.expect,
     ncp = require('ncp').ncp,
     grunt = require("grunt"),
-    _ = grunt.util._,
-    JsBeautifierTask = require("../lib/jsbeautifier");
+    JsBeautifierTask = require("../lib/jsbeautifier"),
+    createMockTask = require("./mockTask");
 
 /*jshint -W030*/
 describe("JsBeautifier: Mode test", function() {
-    var createMockTask,
-        mockTask,
+    var mockTask,
         oriGruntFailWarn = grunt.fail.warn,
         warnMessage;
-
-    createMockTask = function(taskOptions, files, done) {
-        return {
-            _taskOptions: taskOptions,
-            files: [{
-                src: grunt.file.expand(files)
-            }],
-            options: function(defs) {
-                return _.defaults(this._taskOptions, defs);
-            },
-            async: function() {
-                return done || function() {};
-            }
-        };
-    };
 
     beforeEach(function(done) {
         grunt.fail.warn = function dummyWarn(err) {

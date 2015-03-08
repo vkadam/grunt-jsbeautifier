@@ -139,7 +139,8 @@ If a filename is specified, options and globals defined therein will be used. Th
               spaceBeforeConditional: true,
               spaceInParen: false,
               unescapeStrings: false,
-              wrapLineLength: 0
+              wrapLineLength: 0,
+              endWithNewline: true
           }
       }
   },
@@ -182,6 +183,7 @@ jsbeautifier: {
 ```
 
 ## Release History
+* 0.2.9: Honor end_with_newline attribute of [js-beautify](https://github.com/beautify-web/js-beautify/blob/f67aa02ef7da30b726843c4e3940c85e1757cae6/js/lib/beautify.js#L75). [45](https://github.com/vkadam/grunt-jsbeautifier/issues/45),[46](https://github.com/vkadam/grunt-jsbeautifier/issues/46)
 * 0.2.8: Support for .jsbeautifyrc, [28](https://github.com/vkadam/grunt-jsbeautifier/issues/28)
 * 0.2.7: Use latest dependencies without throwing "latest" keyword warning, [35](https://github.com/vkadam/grunt-jsbeautifier/issues/35)
 * 0.2.6: Bumped version after for changing dist to dest
