@@ -182,6 +182,7 @@ jsbeautifier: {
 ```
 
 ## Release History
+* 0.2.8: Support for .jsbeautifyrc, [28](https://github.com/vkadam/grunt-jsbeautifier/issues/28)
 * 0.2.7: Use latest dependencies without throwing "latest" keyword warning, [35](https://github.com/vkadam/grunt-jsbeautifier/issues/35)
 * 0.2.6: Bumped version after for changing dist to dest
 * 0.2.5: Support dist folder and show all failed files in VERIFY_MODE [22](https://github.com/vkadam/grunt-jsbeautifier/issues/22), [24](https://github.com/vkadam/grunt-jsbeautifier/issues/24), [25](https://github.com/vkadam/grunt-jsbeautifier/issues/25)
