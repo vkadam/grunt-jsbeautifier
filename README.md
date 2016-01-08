@@ -96,7 +96,7 @@ All beautified file will be stored under "dest".
 Type: `String`
 Default value: `null`
 
-Recommended for version < 0.2.7, use `.jsbeautifyrc` for > 0.2.7
+Recommended for version < 0.2.7, use `.jsbeautifierrc` for > 0.2.7
 
 If a filename is specified, options defined therein will be used. The `config` file must be valid JSON and looks like the one supported by js-beautify itself. Values defined in gruntfile will take precedence on config file values.
 
