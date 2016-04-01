@@ -181,7 +181,7 @@ jsbeautifier: {
 #### 2. Use specific version of js-beautify
 If you want use specific version of js-beautify instead of latest, please refer to [npm shrinkwrap](https://npmjs.org/doc/shrinkwrap.html)
 
-#### 3. Beautify files other than js, json, css & html
+#### 3. Beautify files other than js, json, es6, css & html
 If you need to beautify files other than js, json, css & html, it can be done by passing **fileTypes**.
 
 For example, beautifying **".js.erb"** files **along with ".js"**, beautifying **".less"** files **along with ".css"**, beautifying **".html.erb"** files **along with ".html"**.
