@@ -22,4 +22,14 @@ describe("JsBeautifier: Generic test", function() {
         task = new JsBeautifierTask(mockTask);
         task.run();
     });
+
+    it("Verify task response with missing file", function(done) {
+        var task;
+        mockTask = createMockTask({}, ["some/missing/file.html", "some/missing/file.js", "some/missing/file.css"], function() {
+            done();
+        });
+
+        task = new JsBeautifierTask(mockTask);
+        task.run();
+    });
 });
