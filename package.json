@@ -1,7 +1,7 @@
 {
     "name": "grunt-jsbeautifier",
     "description": "jsbeautifier.org for grunt",
-    "version": "0.2.12-SNAPSHOT",
+    "version": "0.2.12",
     "homepage": "https://github.com/vkadam/grunt-jsbeautifier",
     "author": {
         "name": "Vishal Kadam",
