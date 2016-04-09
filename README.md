@@ -203,6 +203,7 @@ jsbeautifier: {
 ```
 
 ## Release History
+* 0.2.11: Format .es6 as .js by default, [56](https://github.com/vkadam/grunt-jsbeautifier/issues/56)
 * 0.2.10: Support for jsBeautifyVersion, [44](https://github.com/vkadam/grunt-jsbeautifier/issues/44)
 * 0.2.9: Honor end_with_newline attribute of [js-beautify](https://github.com/beautify-web/js-beautify/blob/f67aa02ef7da30b726843c4e3940c85e1757cae6/js/lib/beautify.js#L75). [45](https://github.com/vkadam/grunt-jsbeautifier/issues/45),[46](https://github.com/vkadam/grunt-jsbeautifier/issues/46)
 * 0.2.8: Support for .jsbeautifyrc, [28](https://github.com/vkadam/grunt-jsbeautifier/issues/28)
