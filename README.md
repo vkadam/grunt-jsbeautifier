@@ -66,6 +66,61 @@ grunt.loadNpmTasks("grunt-jsbeautifier");
 }
 ```
 
+### Run single file
+
+You can run jsbeautifier on a single file by passing runtime command line argument.
+Its possible to combine this command with existing jsbeautifier task, so config from specified task can be used for beautifying mentioned file.  
+
+#### Run with multi task
+If you have multi task configured like this,
+
+```javascript
+"jsbeautifier" : {
+    "default": {
+        src : ["path/to/some/files/*.js"],
+        options:{
+            js: {
+                indentSize: 5
+            }
+        }
+    }
+}
+```
+
+and want to beautify a file which is lets say under
+```
+/tmp/some/non/configured/file.js
+```
+
+then run command like
+```
+grunt jsbeautifier:default:file:/tmp/some/non/configured/file.js
+```
+
+#### Run with single task
+If you have single task configured like this,
+
+```javascript
+"jsbeautifier" : {
+    src : ["path/to/some/files/*.js"],
+    options:{
+        js: {
+            indentSize: 5
+        }
+    }
+}
+```
+
+and want to beautify a file which is lets say under
+```
+/tmp/some/non/configured/file.js
+```
+
+then run command like
+```
+grunt jsbeautifier::file:/tmp/some/non/configured/file.js
+```
+
 ## Config
 
 #### files

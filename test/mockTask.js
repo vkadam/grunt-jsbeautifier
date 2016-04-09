@@ -3,7 +3,11 @@
 var grunt = require("grunt"),
     _ = grunt.util._;
 
-module.exports = function(taskOptions, files, done) {
+module.exports = function mockTask(taskOptions, files, args, done) {
+    if (_.isFunction(args)) {
+        done = args;
+        args = [];
+    }
     return {
         _taskOptions: taskOptions,
         files: [{
@@ -12,6 +16,7 @@ module.exports = function(taskOptions, files, done) {
         options: function(defs) {
             return _.defaults(this._taskOptions, defs);
         },
+        args: args || [],
         async: function() {
             return done || function() {};
         }
